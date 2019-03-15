@@ -4,4 +4,4 @@ apps:
     name: thermometer
     exec_mode: cluster
     env:
-      LOCATION_NAME: greenhouse
+      LOCATION_NAME: ""
