@@ -30,9 +30,6 @@ if (config.metrics.showDefault) {
 const temperature = new promclient.Gauge(({
   name: config.location.name,
   help: 'Temperature in ° celsius',
-  labelNames: [
-    'timestamp',
-  ],
 }));
 
 register.registerMetric(temperature);
@@ -41,9 +38,7 @@ app
   .get('/metrics', async (req, res) => {
     try {
       const temp = await thermometer();
-      temperature.set({
-        timestamp: Math.round(Date.now() / 1000),
-      }, temp);
+      temperature.set(temp);
 
       res.set('content-type', 'text/plain')
         .send(await register.metrics());
