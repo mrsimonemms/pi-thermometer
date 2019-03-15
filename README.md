@@ -7,7 +7,8 @@ Digital thermometer for a Raspberry Pi
 > This assumes you want to run this on startup.
 
 - Install Node
-- Install library dependencies - `npm i`
+- Install library dependencies - `npm i --production`
+- Set the `LOCATION_NAME` envvar in `app.yaml`
 - Deploy - `npm run deploy`
 - Restart on boot - `npm run startup`
 
