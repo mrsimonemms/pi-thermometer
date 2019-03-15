@@ -12,6 +12,18 @@ Digital thermometer for a Raspberry Pi
 - Deploy - `npm run deploy`
 - Restart on boot - `npm run startup`
 
+# Configuration
+
+Set any of the following environment variables:
+
+- `LOCATION_NAME` string (required): Sets the location name for the Prometheus
+gauge.
+- `METRICS_SHOW_DEFAULT` boolean: If `false` it won't display the default metrics.
+Defaults to `true`.
+- `METRICS_TEMP_OFFSET` number: Offsets the temperature, useful for correcting if
+the result is slightly different to ambient temperature. Defaults to `0`
+- `SERVER_PORT` number: The port the server runs on. Defaults to `3000`.
+
 # Troubleshooting
 
 ## No temperature sensor found

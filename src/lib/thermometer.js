@@ -10,9 +10,9 @@ const util = require('util');
 /* Third-party modules */
 
 /* Files */
+const config = require('../config');
 
-
-const config = {
+const filePath = {
   folder: '/sys/bus/w1/devices/',
   suffix: '/w1_slave',
 };
@@ -24,7 +24,7 @@ const config = {
  * @returns {Promise<number | never | bigint | T | T>}
  */
 async function getTempSensor() {
-  const devices = await util.promisify(fs.readdir)(config.folder);
+  const devices = await util.promisify(fs.readdir)(filePath.folder);
 
   const device = devices.find(item => item.startsWith('28-'));
 
@@ -32,7 +32,7 @@ async function getTempSensor() {
     throw new Error('No temperature sensor found');
   }
 
-  return path.join(config.folder, device, config.suffix);
+  return path.join(filePath.folder, device, filePath.suffix);
 }
 
 module.exports = async function getTemperature() {
@@ -55,6 +55,10 @@ module.exports = async function getTemperature() {
     throw new Error('Temperature invalid');
   }
 
-  /* Return the number, rounded to 1dp */
-  return Math.round(temp[1] / 100) / 10;
+  /* Do all the calculation as integers to avoid floating point errors */
+  let tempOutput = Math.round(temp[1] / 100);
+  tempOutput += (config.metrics.tempOffset * 10);
+  tempOutput /= 10;
+
+  return tempOutput;
 };
