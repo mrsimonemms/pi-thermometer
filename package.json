@@ -1,0 +1,31 @@
+{
+  "name": "pi-thermometer",
+  "version": "1.0.0",
+  "description": "Digital thermometer for a Raspberry Pi",
+  "main": "src/app",
+  "scripts": {
+    "serve": "nodemon ./",
+    "start": "node ./",
+    "test": "eslint ./"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/riggerthegeek/pi-thermometer.git"
+  },
+  "author": "Simon Emms <simon@simonemms.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/riggerthegeek/pi-thermometer/issues"
+  },
+  "homepage": "https://github.com/riggerthegeek/pi-thermometer#readme",
+  "dependencies": {
+    "express": "^4.16.4",
+    "prom-client": "^11.2.1"
+  },
+  "devDependencies": {
+    "eslint": "^5.15.1",
+    "eslint-config-airbnb-base": "^13.1.0",
+    "eslint-plugin-import": "^2.16.0",
+    "nodemon": "^1.18.10"
+  }
+}
