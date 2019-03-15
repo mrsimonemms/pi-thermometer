@@ -48,8 +48,13 @@ app
       res.set('content-type', 'text/plain')
         .send(await register.metrics());
     } catch (err) {
+      console.log('Error', err.stack);
+
       res.status(500)
-        .send('twat');
+        .send({
+          message: err.message,
+          stack: err.stack,
+        });
     }
   })
   .listen(config.server.port, () => {

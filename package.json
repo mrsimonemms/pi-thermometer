@@ -4,8 +4,12 @@
   "description": "Digital thermometer for a Raspberry Pi",
   "main": "src/app",
   "scripts": {
+    "delete": "pm2 delete app.yaml",
+    "deploy": "pm2 start app.yaml",
+    "destroy": "pm2 stop app.yaml",
     "serve": "nodemon ./",
     "start": "node ./",
+    "startup": "pm2 startup",
     "test": "eslint ./"
   },
   "repository": {
@@ -20,6 +24,7 @@
   "homepage": "https://github.com/riggerthegeek/pi-thermometer#readme",
   "dependencies": {
     "express": "^4.16.4",
+    "pm2": "^3.4.0",
     "prom-client": "^11.2.1"
   },
   "devDependencies": {

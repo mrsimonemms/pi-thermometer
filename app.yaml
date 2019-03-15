@@ -1,0 +1,7 @@
+apps:
+  - script: ./
+    instances: 0
+    name: thermometer
+    exec_mode: cluster
+    env:
+      LOCATION_NAME: greenhouse
