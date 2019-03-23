@@ -5,3 +5,4 @@ apps:
     exec_mode: cluster
     env:
       LOCATION_NAME: ""
+      METRICS_SHOW_DEFAULT: false
